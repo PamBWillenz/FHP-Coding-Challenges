@@ -9,7 +9,7 @@ def collatz_length
       if (value % 2 == 0)
         value /= 2
       else
-        value = 3*value + 1       
+        value = 3 * value + 1       
       end
       length += 1     
     end
