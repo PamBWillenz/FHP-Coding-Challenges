@@ -12,6 +12,7 @@ method(ray)
 # This method scans the long string and starting at the beginning of the string, the string looks /XX/ between each value and keeps going one up the string to the next VAL 
 # until all the VAL and returns a string with only the /XX/ are found.
 # then the string prints out those values that have /XX/ in them
+# Using Regex, find the VAL that is directly after XX
 
 str = """Lorem ipsum dolor sit amet, consec[VAL1]tetur adipiscing elit. XX et sapien eu risus pretium mollis. Fusce diam lacus, ornare quis dapibus in, porttitor non risus. Curabitur eleifend libero et XX venenatis. Donec malesuada lobortis ex, eget cursus[VAL2] lectus interdum a. [VAL43]Aliquam iaculis magna nec rXXisus dapibus lobortis. Aliquam aliquam magna et fringilla tincidunt. Proin urna risus, lacinia eu quam in, venenatis aliquet magna. Mauris at ex id justo lacinia maximus id id mauris. Phasellus at dolor convallis, pellentesque leo maximus, vulputate diam. In hac habitasse platea dictumst. Nullam feugiat venenatis congue. Suspendisse vestibulum ornare pretium. Sed quis [VAL24]tortor lobortis, dignissim mi eu, consequat justo. Duis nunc ipsum, aliquet semper sem vitXXae, iaculis ultrices sem. Duis rutrum porttitor dui. Suspendisse feugiat nulla ac diam tincidunt convallis. Vestibulum qua[VAL5]m urna, mattis vel ma[VAL6]gna quis, pretium placerat leo. Fusce ullaXXmcorper[VAL7] luctXXus porttitor. Vestibulum ante ipsum primis in faucibus orci luctu[VAL18]s et ultrices posuere cubilia Curae; Pellent[VAL9]esque laoreet laXXcus nunc, eget bibendum leo efficitur nec. Sed tincidunt turpis a ex eleifend congue. Praesent blandit mi nec metus convallis tempus pulvinar eu odio. Nullam mollis tellus urna, ac dign[VAL10]issim neque dapibus nec. Donec rhoncus maximus metus, ornare rhoncus metus pharetra nec. Donec congue nisl non."""
 
@@ -33,8 +34,7 @@ method(str)
 
 # METHOD 3
 # convert a hex value into a string, make them uppercase and separate the strings /../
-# and then convert the string of hex digits back to binary by taking the hex digits as pairs, oop the numbers in a block, 
-# sorting them from lower to higher and dividing them by 255.to_f and rounding to two decimals
+# convert array of float coverted from a hex
 def method(hex_value)
   hex_pairs = hex_value.to_s(16).upcase.scan(/../)
   hex_pairs.map do |x|
