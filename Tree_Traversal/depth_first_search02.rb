@@ -12,11 +12,10 @@ class Tree
 
   def depth_first  
     puts @payload
-    return self if @payload == 11
+    return @payload if @payload == 11
     @children.each do |child|
       value = child.depth_first
-      if value == nil
-      else
+      if value
         return value
       end
     end
