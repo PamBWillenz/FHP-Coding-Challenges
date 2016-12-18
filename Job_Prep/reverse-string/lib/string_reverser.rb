@@ -1,14 +1,43 @@
-module StringReverser
-	def self.reverse(string)
-	 reversed = []
-   array_string = string.split("")
+# module StringReverser
+#   def self.reverse(string)
+#     reversed_string = ''
 
-   until array_string.empty?
-    reversed << array_string.pop
+#     i = 0
+#     while i < string.length
+#       reversed_string = string[i] + reversed_string
+#       i += 1
+#     end
+
+#     return reversed_string
+#   end
+# end
+
+  def reverse(string)
+    string = string.split('')
+    reversed_string = []
+
+    string.each do |char|
+      reversed_string.unshift(char)
     end
-  reversed.join
+
+    return reversed_string.join('')
   end
-end
+
+puts reverse('')
+puts reverse('hello')
+puts reverse('I want to get better at this')
+
+# module StringReverser
+# 	def self.reverse(string)
+# 	 reversed = []
+#    array_string = string.split("")
+
+#    until array_string.empty?
+#     reversed << array_string.pop
+#     end
+#   reversed.join
+#   end
+# end
 
 # Reverse a string with an array
   # def self.reverse(string)
