@@ -15,11 +15,25 @@ class BinaryTree
 
   def insert_value(value)
     node = Node.new(value)
-
+    while node != nil
+      if value < @root.payload && @root.left == nil
+        @root.left = node
+        @root = @root.payload
+      elsif value > @root.payload && @root.right == nil
+        @root.right = node
+        @root = @root.payload
+      elsif value < @root.payload && @root.left != nil
+        @root = @root.left
+      elsif value > @root.payload && @root.right != nil
+        @root = @root.right
+      else
+        return node
+      end
+    end
+  end
+          
     # code where you check node's payload
     # is this node's payload less or greater than root's payload
-
-  end
 
 end
 
