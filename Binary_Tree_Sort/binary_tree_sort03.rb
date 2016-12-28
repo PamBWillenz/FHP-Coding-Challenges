@@ -13,34 +13,50 @@ class BinaryTree
     @root = Node.new(root_value)
   end
 
-  def insert_value(value)
-    node = Node.new(value)
-    while node != nil
-      if value < @root.payload && @root.left == nil
-        @root.left = node
-        @root = @root.payload
-      elsif value > @root.payload && @root.right == nil
-        @root.right = node
-        @root = @root.payload
-      elsif value < @root.payload && @root.left != nil
-        @root = @root.left
-      elsif value > @root.payload && @root.right != nil
-        @root = @root.right
-      else
-        return node
-      end
+  def insert(value)
+    insert_value(@root, value)
+  end
+
+  def sort
+    traverse(@root)
+  end
+
+  private
+
+  def insert_value(node, value)
+    if value < node.payload && node.left == nil
+      new_node = Node.new(value)
+      node.left = new_node
+      return
+    elsif value > node.payload && node.right == nil
+      new_node = Node.new(value)
+      node.right = new_node
+      return
+    elsif value < node.payload && node.left != nil
+      insert_value(node.left, value)
+    elsif value > node.payload && node.right != nil
+      insert_value(node.right, value)
     end
   end
-          
-    # code where you check node's payload
-    # is this node's payload less or greater than root's payload
 
+  def traverse(node)
+    if node == nil
+      return
+    end
+      traverse(node.left)
+      puts node.payload
+      traverse(node.right)
+  end
+
+
+
+    
 end
 
-node_a = Node.new(1)
-node_b = Node.new(2)
-node_c = Node.new(3)
+btree = BinaryTree.new(2)
+btree.insert(1)
+btree.insert(3)
+btree.insert(4)
+p btree
 
-node_a.left = node_b
-node_a.right = node_c
-p node_a
+btree.sort
